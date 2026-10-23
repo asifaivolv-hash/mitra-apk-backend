@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import mongoose from 'mongoose';
 
-const DEFAULT_MONGODB_URI = 'mongodb+srv://asifaivolv_db_user:Aivolv%402026@cluster0.tzxsajk.mongodb.net/mitra-mobile-apk?retryWrites=true&w=majority';
+const DEFAULT_MONGODB_URI = 'mongodb+srv://asifaivolv_db_user:Aivolv@2026@cluster0.tzxsajk.mongodb.net/mitra-mobile-apk?retryWrites=true&w=majority';
 
 export const connectDB = async (): Promise<void> => {
   const uri = process.env.MONGODB_URI || DEFAULT_MONGODB_URI;
