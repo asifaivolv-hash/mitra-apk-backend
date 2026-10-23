@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const eventController_1 = require("../controllers/eventController");
+const auth_1 = require("../middleware/auth");
+const router = (0, express_1.Router)();
+router.get('/', auth_1.authenticateToken, eventController_1.getEvents);
+router.get('/:id', auth_1.authenticateToken, eventController_1.getEventById);
+router.post('/:id/rsvp', auth_1.authenticateToken, eventController_1.toggleRSVP);
+router.post('/', auth_1.authenticateToken, (0, auth_1.requireRoles)(['admin', 'superadmin', 'committee']), eventController_1.createEvent);
+router.put('/:id', auth_1.authenticateToken, (0, auth_1.requireRoles)(['admin', 'superadmin', 'committee']), eventController_1.updateEvent);
+router.delete('/:id', auth_1.authenticateToken, (0, auth_1.requireRoles)(['admin', 'superadmin']), eventController_1.deleteEvent);
+exports.default = router;
